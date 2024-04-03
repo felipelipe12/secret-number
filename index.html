@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - Secret Number</title>
+    <link rel="icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Titan+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="game">
+        <div class="card">
+            <h1 class="title">Secret Number</h1>
+            <label for="number">Enter a number from 1 to 10!</label>
+            <input id="number" type="number">
+            <div class="buttons">
+                <button type="button" onclick="validateNumber()">Check</button>
+                <button type="reset" onclick="restartGame()">Restart</button>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal">
+            <div class="card">
+                <h1 class="modal_title"></h1>
+                <span class="modal_subtitle"></span>
+                <span class="modal_number"></span>
+                <span class="modal_word"></span>
+                <div class="buttons">
+                    <button class="button" type="button" onclick="hideModal()"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

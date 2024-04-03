@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #FFFFFF;
+    --piggy-pink: #FFE5EC;
+    --cubble-gum: #FFC2D1;
+    --cherry-blossom-pink: #FFB3C6;
+    --flamingo-pink: #FF8FAB;
+    --light-crimson: #FB6F92;
+}
+
+body {
+    background-color: var(--cherry-blossom-pink);
+    font-family: "Madimi One", sans-serif;
+
+}
+
+section.game {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section.game div.card {
+    background-color: var(--piggy-pink);
+    border-radius: 15px;
+    box-shadow: var(--light-crimson) 0px 10px 10px;
+    padding: 30px;
+    height: 350px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section.game div.card h1.title,
+section.game div#modal div.card h1.modal_title,
+section.game div#modal div.card span.modal_number {
+    color: var(--cherry-blossom-pink);
+    filter: drop-shadow(0px 5px 0px var(--light-crimson));
+    font-size: 54px;
+}
+
+section.game div.card label,
+section.game div#modal div.card span.modal_subtitle,
+section.game div#modal div.card span.modal_word {
+    color: var(--light-crimson);
+    font-size: 20px;
+}
+
+section.game div.card input[type="number"] {
+    border: none;
+    border-radius: 10px;
+    color: var(--light-crimson);
+    font-family: "Madimi One", sans-serif;
+    font-size: 24px;
+    padding: 20px;
+    outline: 2px solid var(--cubble-gum);
+    text-align: center;
+    height: 60px;
+    width: 100px;
+    transition: .3s;
+}
+
+section.game div.card input[type="number"]:focus {
+    outline: 2px solid var(--light-crimson);
+}
+
+section.game div.card input[type="number"]::-webkit-inner-spin-button,
+section.game div.card input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+section.game div.card div.buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+section.game div.card div.buttons button {
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Madimi One", sans-serif;
+    font-size: 24px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    width: 100%;
+    transition: .3s;
+}
+
+section.game div.card div.buttons button[type="button"] {
+    background-color: var(--cherry-blossom-pink);
+    color: var(--white);
+}
+
+section.game div.card div.buttons button[type="reset"] {
+    background-color: var(--white);
+    color: var(--cherry-blossom-pink);
+}
+
+section.game div.card button:hover {
+    transform: scale(1.03);
+    box-shadow: var(--light-crimson) 0px 3px 5px;
+}
+
+section.game div#modal {
+    height: 100dvh;
+    width: 100%;
+    display: none;
+    background-color: #0000003f;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+section.game div#modal div.card {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 768px) {
+    section.game div.card {
+        padding: 20px;
+        height: 300px;
+        width: 350px;
+    }
+
+    section.game div.card h1.title,
+    section.game div#modal div.card h1.modal_title,
+    section.game div#modal div.card span.modal_number {
+        font-size: 10vw;
+    }
+
+    section.game div.card label,
+    section.game div#modal div.card span.modal_subtitle,
+    section.game div#modal div.card span.modal_word {
+        font-size: 5vw;
+    }
+
+    section.game div.card input[type="number"] {
+        font-size: 5vw;
+        padding: 15px;
+        height: 50px;
+    }
+
+    section.game div.card div.buttons {
+        gap: 20px;
+    }
+
+    section.game div.card div.buttons button {
+        font-size: 5vw;
+    }
+}
