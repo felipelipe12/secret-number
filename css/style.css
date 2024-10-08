@@ -5,6 +5,12 @@
 }
 
 :root {
+    --pink-050: #fdf2f8;
+    --pink-300: #f9a8d4;
+    --pink-500: #ec4899;
+    --pink-700: #be185d;
+    --pink-950: #500724;
+
     --white: #FFFFFF;
     --piggy-pink: #FFE5EC;
     --cubble-gum: #FFC2D1;
@@ -14,119 +20,186 @@
 }
 
 body {
-    background-color: var(--cherry-blossom-pink);
+    background-color: var(--pink-700);
     font-family: "Madimi One", sans-serif;
-
+    user-select: none;
+    height: 100dvh;
 }
 
-section.game {
-    height: 100dvh;
+h1 {
+    font-size: 54px;
+    color: var(--pink-300);
+    filter: drop-shadow(0px 5px 0px var(--pink-950));
+}
+
+h2 {
+    color: var(--pink-950);
+    font-size: 28px;
+}
+
+button,
+input {
+    font-family: "Madimi One", sans-serif;
+}
+
+section.secret-number {
+    position: relative;
+    height: 100%;
+}
+
+section.secret-number div.container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 0 auto;
+    height: 100%;
+    width: 480px;
 }
 
-section.game div.card {
-    background-color: var(--piggy-pink);
-    border-radius: 15px;
-    box-shadow: var(--light-crimson) 0px 10px 10px;
+section.secret-number div.container div.secret-number__card {
+    background-color: var(--pink-300);
+    border-radius: 25px;
+    box-shadow: var(--pink-950) 0px 10px 10px;
     padding: 30px;
     height: 350px;
-    width: 500px;
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section.secret-number div.container div.secret-number__card div.secret-number__card--inputs {
+    background-color: var(--pink-700);
+    border-radius: 15px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 20px;
 }
 
-section.game div.card h1.title,
-section.game div#modal div.card h1.modal_title,
-section.game div#modal div.card span.modal_number {
-    color: var(--cherry-blossom-pink);
-    filter: drop-shadow(0px 5px 0px var(--light-crimson));
-    font-size: 54px;
-}
-
-section.game div.card label,
-section.game div#modal div.card span.modal_subtitle,
-section.game div#modal div.card span.modal_word {
-    color: var(--light-crimson);
-    font-size: 20px;
-}
-
-section.game div.card input[type="number"] {
-    border: none;
+section.secret-number div.container div.secret-number__card div.secret-number__card--inputs label {
+    background-color: var(--pink-500);
     border-radius: 10px;
-    color: var(--light-crimson);
-    font-family: "Madimi One", sans-serif;
+    color: var(--pink-050);
     font-size: 24px;
-    padding: 20px;
-    outline: 2px solid var(--cubble-gum);
+    padding: 5px 10px;
+}
+
+section.secret-number div.container div.secret-number__card div.secret-number__card--inputs input[type=number] {
+    background-color: var(--pink-050);
+    border: 3px solid var(--pink-500);
+    border-radius: 15px;
+    color: var(--pink-950);
+    font-size: 24px;
+    outline: none;
     text-align: center;
-    height: 60px;
+    padding: 15px;
     width: 100px;
-    transition: .3s;
 }
 
-section.game div.card input[type="number"]:focus {
-    outline: 2px solid var(--light-crimson);
-}
-
-section.game div.card input[type="number"]::-webkit-inner-spin-button,
-section.game div.card input[type="number"]::-webkit-outer-spin-button {
+section.secret-number div.container div.secret-number__card div.secret-number__card--inputs input[type=number]::-webkit-outer-spin-button,
+section.secret-number div.container div.secret-number__card div.secret-number__card--inputs input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-section.game div.card div.buttons {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 30px;
+section.secret-number div.container div.secret-number__card div.secret-number__card--inputs input[type=number]::placeholder {
+    color: var(--pink-300);
 }
 
-section.game div.card div.buttons button {
-    border: none;
+section.secret-number div.container div.secret-number__card button {
+    background-color: var(--pink-700);
     border-radius: 10px;
+    color: var(--pink-050);
+    border: none;
     cursor: pointer;
-    font-family: "Madimi One", sans-serif;
-    font-size: 24px;
+    font-size: 18px;
+    box-shadow: 0 5px var(--pink-950);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 10px 20px;
-    text-transform: uppercase;
-    width: 100%;
     transition: .3s;
 }
 
-section.game div.card div.buttons button[type="button"] {
-    background-color: var(--cherry-blossom-pink);
-    color: var(--white);
+section.secret-number div.container div.secret-number__card button:active {
+    box-shadow: 0 0 var(--pink-950);
+    transform: translateY(5px);
 }
 
-section.game div.card div.buttons button[type="reset"] {
-    background-color: var(--white);
-    color: var(--cherry-blossom-pink);
-}
-
-section.game div.card button:hover {
-    transform: scale(1.03);
-    box-shadow: var(--light-crimson) 0px 3px 5px;
-}
-
-section.game div#modal {
-    height: 100dvh;
+/* Popup */
+section.secret-number div.secret-number__popup.show {
+    background-color: #00000080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    display: none;
-    background-color: #0000003f;
+    height: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
-}
-
-section.game div#modal div.card {
-    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+section.secret-number div.secret-number__popup.hidden {
+    display: none;
+}
+
+section.secret-number div.secret-number__popup div.secret-number__popup--card {
+    background-color: var(--pink-300);
+    border-radius: 25px;
+    box-shadow: var(--pink-950) 0px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+    text-align: center;
+    width: 350px;
+}
+
+section.secret-number div.secret-number__popup div.secret-number__popup--card span {
+    color: var(--pink-700);
+    font-size: 48px;
+    font-weight: 900;
+    filter: drop-shadow(0px 5px 0px var(--pink-950));
+}
+
+section.secret-number div.secret-number__popup div.secret-number__popup--card div.secret-number__card--buttons {
+    display: flex;
+    gap: 20px;
+}
+
+section.secret-number div.secret-number__popup div.secret-number__popup--card button {
+    background-color: var(--pink-700);
+    color: var(--pink-050);
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 5px var(--pink-950);
+    transition: .3s;
+}
+
+section.secret-number div.secret-number__popup div.secret-number__popup--card div.secret-number__card--buttons button:nth-child(1) {
+    background-color: var(--pink-700);
+    color: var(--pink-050);
+}
+
+section.secret-number div.secret-number__popup div.secret-number__popup--card div.secret-number__card--buttons button:nth-child(2) {
+    background-color: var(--pink-050);
+    color: var(--pink-700);
+}
+
+section.secret-number div.secret-number__popup div.secret-number__popup--card button:active {
+    box-shadow: 0 0 var(--pink-950);
+    transform: translateY(5px);
 }
 
 @media screen and (max-width: 768px) {

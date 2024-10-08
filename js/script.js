@@ -1,59 +1,77 @@
-let attemptNumber = 1;
-let randomNumber = generateNumber();
-console.log(randomNumber);
+let secretNumber = parseInt(Math.random() * 10 + 1);
 
-function generateNumber() {
-    return parseInt(Math.random() * 10 + 1);
-}
-
-function hintText(className, text) {
-    let field = document.querySelector('.' + className);
-    field.innerHTML = text;
-}
-
-function validateNumber() {
-    let writtenNumber = document.querySelector('input').value;
-    let attemptWord = attemptNumber > 1 ? 'attempts!' : 'attempt!';
-
-    document.getElementById('modal').style.display = 'block';
-
-    if (writtenNumber == randomNumber) {
-        hintText('modal_title', 'You win!');
-        hintText('modal_subtitle', 'Congratulations!!');
-        hintText('modal_number', `${attemptNumber}`);
-        hintText('modal_word', `${attemptWord}`);
-        hintText('button', 'Yeah!');
-    } else if (writtenNumber == '' || writtenNumber == '0' || writtenNumber == 'e') {
-        hintText('modal_title', 'Invalid value!');
-        hintText('modal_subtitle', 'The value is invalid!');
-        hintText('modal_number', '');
-        hintText('modal_word', '');
-        hintText('button', 'I understand');
-    } else {
-        hintText('modal_title', 'You lose!');
-        hintText('modal_number', `${attemptNumber}`);
-        hintText('modal_word', `${attemptWord}`);
-        hintText('button', 'Try again');
-        
-        if (writtenNumber > randomNumber) {
-            hintText('modal_subtitle', 'The number is SMALLER!');
-        } else {
-            hintText('modal_subtitle', 'The number is HIGHER!');
+function inputLength(input, maxLength) {
+    input.addEventListener('input', function () {
+        if (this.value.length > maxLength) {
+            this.value = this.value.slice(0, maxLength);
         }
-        attemptNumber++;
-        clearInput();
+    });
+}
+
+function showPopup(popup) {
+    popup.classList.remove('hidden');
+    popup.classList.add('show');
+}
+
+function hidePopup(popup) {
+    popup.classList.remove('show');
+    popup.classList.add('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    inputLength(document.getElementById('inputNumber'), 2);
+});
+
+document.getElementById('buttonConfirm').addEventListener('click', function () {
+    const inputNumber = parseInt(document.getElementById('inputNumber').value);
+
+    const popupValidate = document.getElementById('popupValidate');
+    const messageValidate = document.getElementById('messageValidate');
+
+    if (isNaN(inputNumber)) {
+        messageValidate.textContent = "Please enter valid value.";
+        showPopup(popupValidate);
+        return;
     }
-}
 
-function clearInput() {
-    writtenNumber = document.querySelector('input');
-    writtenNumber.value = '';
-}
+    if (inputNumber < 1 || inputNumber > 10) {
+        messageValidate.textContent = "Please enter a number from 1 to 10.";
+        showPopup(popupValidate);
+        return;
+    }
 
-function hideModal() {
-    document.getElementById('modal').style.display = 'none';
-}
+    const popupResult = document.getElementById('popupResult');
+    const messageResult = document.getElementById('messageResult');
+    const valueResult = document.getElementById('valueResult');
 
-function restartGame() {
-    window.location.reload();
-}
+    if (inputNumber < secretNumber) {
+        messageResult.textContent = "You lose! The number is:";
+        valueResult.textContent = "Bigger";
+    } else if (inputNumber > secretNumber) {
+        messageResult.textContent = "You lose! The number is:";
+        valueResult.textContent = "Smaller";
+    } else {
+        messageResult.textContent = "You win! The number is:";
+        valueResult.textContent = secretNumber;
+    }
+    showPopup(popupResult);
+});
+
+document.getElementById('buttonValidate').addEventListener('click', function () {
+    const popupValidate = document.getElementById('popupValidate');
+    hidePopup(popupValidate);
+});
+
+document.getElementById('resultContinue').addEventListener('click', function () {
+    const popupResult = document.getElementById('popupResult');
+    hidePopup(popupResult);
+});
+
+document.getElementById('resultRestart').addEventListener('click', function () {
+    const popupResult = document.getElementById('popupResult');
+    hidePopup(popupResult);
+
+    document.getElementById('inputNumber').value = '';
+
+    secretNumber = parseInt(Math.random() * 10 + 1);
+});

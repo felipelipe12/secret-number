@@ -13,26 +13,33 @@
 </head>
 
 <body>
-    <section class="game">
-        <div class="card">
-            <h1 class="title">Secret Number</h1>
-            <label for="number">Enter a number from 1 to 10!</label>
-            <input id="number" type="number">
-            <div class="buttons">
-                <button type="button" onclick="validateNumber()">Check</button>
-                <button type="reset" onclick="restartGame()">Restart</button>
+    <section class="secret-number">
+        <div class="container">
+            <h1>Secret Number</h1>
+            <div class="secret-number__card">
+                <h2>Choose a number from 1 to 10!</h2>
+                <div class="secret-number__card--inputs">
+                    <label for="inputNumber">Number</label>
+                    <input id="inputNumber" type="number" placeholder="?">
+                </div>
+                <button id="buttonConfirm" type="button">Confirm</button>
             </div>
         </div>
 
-        <!-- Modal -->
-        <div id="modal">
-            <div class="card">
-                <h1 class="modal_title"></h1>
-                <span class="modal_subtitle"></span>
-                <span class="modal_number"></span>
-                <span class="modal_word"></span>
-                <div class="buttons">
-                    <button class="button" type="button" onclick="hideModal()"></button>
+        <!-- Popup -->
+        <div id="popupValidate" class="secret-number__popup hidden">
+            <div class="secret-number__popup--card">
+                <h2 id="messageValidate"></h2>
+                <button id="buttonValidate" type="button">Ok!</button>
+            </div>
+        </div>
+        <div id="popupResult" class="secret-number__popup hidden">
+            <div class="secret-number__popup--card">
+                <h2 id="messageResult"></h2>
+                <span id="valueResult"></span>
+                <div class="secret-number__card--buttons">
+                    <button id="resultContinue" type="button">Continue</button>
+                    <button id="resultRestart" type="button">Restart</button>
                 </div>
             </div>
         </div>
