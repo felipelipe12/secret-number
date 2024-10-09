@@ -203,35 +203,33 @@ section.secret-number div.secret-number__popup div.secret-number__popup--card bu
 }
 
 @media screen and (max-width: 768px) {
-    section.game div.card {
-        padding: 20px;
-        height: 300px;
-        width: 350px;
+    h1 {
+        font-size: 36px;
     }
 
-    section.game div.card h1.title,
-    section.game div#modal div.card h1.modal_title,
-    section.game div#modal div.card span.modal_number {
-        font-size: 10vw;
+    h2 {
+        font-size: 24px;
     }
 
-    section.game div.card label,
-    section.game div#modal div.card span.modal_subtitle,
-    section.game div#modal div.card span.modal_word {
-        font-size: 5vw;
-    }
-
-    section.game div.card input[type="number"] {
-        font-size: 5vw;
-        padding: 15px;
-        height: 50px;
-    }
-
-    section.game div.card div.buttons {
+    section.secret-number div.container {
         gap: 20px;
+        width: 300px;
     }
 
-    section.game div.card div.buttons button {
-        font-size: 5vw;
+    section.secret-number div.container div.secret-number__card {
+        padding: 20px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    section.secret-number div.container div.secret-number__card div.secret-number__card--inputs label {
+        font-size: 20px;
+    }
+
+    section.secret-number div.container div.secret-number__card div.secret-number__card--inputs input[type=number] {
+        font-size: 20px;
     }
 }
